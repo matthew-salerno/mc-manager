@@ -46,7 +46,7 @@ parts:
       - gir1.2-freedesktop
 
   mc-manager:
-    source: https://github.com/matthew-salerno/mc-as-a-service.git
+    source: https://github.com/matthew-salerno/mc-manager.git
     source-type: git
     plugin: dump
 
