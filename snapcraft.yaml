@@ -34,8 +34,8 @@ parts:
       snapcraftctl build
       pip3 install wheel
       pip3 install urllib3 pydbus
-      pip3 install --ignore-installed pycairo
-      pip3 install --ignore-installed PyGObject
+      pip3 install pycairo
+      pip3 install PyGObject
     build-packages:
       - libgirepository1.0-dev
       - gcc
