@@ -1,5 +1,5 @@
 name: mc-manager
-version: 1.0.0a1.dev4
+version: 1.0.0a1.dev5
 base: core20
 summary: Minecraft server run as a service
 description: Runs, configures, and helps manage a minecraft server. Designed with ubuntu core in mind
@@ -31,8 +31,8 @@ parts:
       snapcraftctl build
       pip3 install wheel
       pip3 install urllib3 pydbus
-      pip3 install pycairo
-      pip3 install PyGObject
+      pip3 install --ignore-installed pycairo
+      pip3 install --ignore-installed PyGObject
     build-packages:
       - libgirepository1.0-dev
       - gcc
