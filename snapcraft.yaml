@@ -1,5 +1,5 @@
 name: mc-manager
-version: 1.0.0a1.dev7
+version: 1.0.0a1.dev8
 base: core20
 summary: Minecraft server run as a service
 description: Runs, configures, and helps manage a minecraft server. Designed with ubuntu core in mind
@@ -24,6 +24,7 @@ apps:
     command: bin/python3 $SNAP/mc_manager
     plugs:
       - dbus-plug
+      - network
     environment:
       GI_TYPELIB_PATH: $SNAP/usr/lib/girepository-1.0:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/girepository-1.0
 
