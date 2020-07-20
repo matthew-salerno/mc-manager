@@ -1,4 +1,4 @@
-name: mc-as-a-service
+name: mc-manager
 version: 1.0.0a1.dev2
 base: core20
 summary: Minecraft server run as a service
