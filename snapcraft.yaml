@@ -1,5 +1,5 @@
 name: mc-manager
-version: 1.0.0a1.dev6
+version: 1.0.0a1.dev7
 base: core20
 summary: Minecraft server run as a service
 description: Runs, configures, and helps manage a minecraft server. Designed with ubuntu core in mind
@@ -7,8 +7,12 @@ type: app
 grade: devel
 confinement: strict
 architectures:
-  - build-on: [arm64,armhf,amd64]
-
+  - build-on: arm64
+    run-on: arm64
+  - build-on: armhf
+    run-on: armhf
+  - build-on: amd64
+    run-on: amd64
 plugs:
   dbus-plug:
     interface: dbus
