@@ -1,0 +1,36 @@
+This is a command_line and TUI program to facilitate the installation, containerization,
+and running of a minecraft java edition server. 
+Supported commands:
+    start: Starts the server
+    stop: Stops the server
+    ramdisk: With no options, will return whether a the ramdisk folder is being used.
+        If given a value it will enable or disable this feature accordingly.
+        If not given a value it return whether or not this feature is being used.
+        
+        IMPORTANT: This feature does not create a ramdisk, to use this properly
+        you MUST mount a ramdisk to the server/ramdisk folder, preferably in
+        fstab. Not doing this and using the ramdisk feature will cause
+        unnecessary wear on your drive with no benefit.
+    set-property: Sets a property in the server.properties
+        The property is indicated by the first argument
+        The value to set it to is indicated bt the second
+        Leave the second value blank to retur nthe property
+        to its default
+    launch-path: Returns the server's launch path (relative to the server folder)
+        if given an argument, it will set the launch path to that argument (relative to server folder)
+    launch-options: Set the options for launching the server jar, for example "Xmx2G Xms2G".
+        Do not add dashes (-) or commas (,). The "jar" option is already managed and should not
+        be set here, see launch_path to change that option.
+    eula: Use this command to agree or revoke the eula agreement
+    get-eula: Returns whether or not you signed the eula
+    send: Sends a console command to the server
+    status: Returns whether or not the server is running
+    install: Installs the server, enter a version as an argument,
+        install the latest by entering "release" or "snapshot"
+        for the latest server in the corresponding branch,
+        or leave empty to launch the tui installer.   
+options:
+    -h, --help:   Displays this message
+    -v --version: Displays the program version
+    -q, --quiet:  Suppresses output to stdout
+    --mc-version: Displays the minecraft version being used

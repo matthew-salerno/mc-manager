@@ -1,0 +1,11 @@
+workspace.code-workspace
+server
+mc_service/config.json
+.vscode
+__pycache__
+apps/__pycache__
+mc_service/__pycache__
+mc_manager/__pycache__
+mc_service/logs
+snapdev
+config.json

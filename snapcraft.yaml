@@ -1,0 +1,54 @@
+name: mc-as-a-service
+version: 1.0.0a1.dev2
+base: core20
+summary: Minecraft server run as a service
+description: Runs, configures, and helps manage a minecraft server. Designed with ubuntu core in mind
+type: app
+grade: devel
+confinement: strict
+architectures:
+  - build-on: [amd64, armhf, arm64]
+    run-on: [amd64, armhf, arm64]
+
+plugs:
+  dbus-plug:
+    interface: dbus
+    bus: system
+    name: com.salernosection.mc_as_a_service
+        
+apps:
+  mc-manager:
+    command: bin/python3 $SNAP/mc_manager
+    plugs:
+      - dbus-plug
+    environment:
+      GI_TYPELIB_PATH: $SNAP/usr/lib/girepository-1.0:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/girepository-1.0
+
+parts:
+  dependencies:
+    plugin: python
+    override-build: |
+      snapcraftctl build
+      pip3 install wheel
+      pip3 install urllib3 pydbus
+      pip3 install pycairo
+      pip3 install PyGObject
+    build-packages:
+      - libgirepository1.0-dev
+      - gcc
+      - pkg-config
+      - libcairo2-dev
+      - gir1.2-glib-2.0
+      - gir1.2-freedesktop
+    stage-packages:
+      - libgirepository1.0-dev
+      - openjdk-8-jre-headless
+      - gir1.2-glib-2.0
+      - gir1.2-freedesktop
+
+  mc-manager:
+    source: https://github.com/matthew-salerno/mc-as-a-service.git
+    source-type: git
+    plugin: dump
+
+    
