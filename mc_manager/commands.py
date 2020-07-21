@@ -92,7 +92,15 @@ def start(args=[], printer=print):
     Returns:
         bool: whether the start was successful
     """
-    started = manager.start(30)
+    if not len(args):
+        started = manager.start(120)
+    else:
+        if type(args[0]) is int:
+            started = manager.start(args[0])
+        else:
+            printer("Please use an integer as the argument")
+            started = False
+    
     if started:
         printer("Started server")
     else:
