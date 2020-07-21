@@ -34,7 +34,7 @@ class constants():
     @property
     def RESOURCES_DIR(self):
         if self.SNAP:
-            return Path(environ["SNAP"])/"mc-manager"/"resources"
+            return Path(environ["SNAP"])/"mc_manager"/"resources"
         else:
             return Path(__file__,'..').resolve()/"resources"
 
