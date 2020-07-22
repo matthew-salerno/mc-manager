@@ -119,7 +119,14 @@ def stop(args=[], printer=print):
     Returns:
         bool: whether the server successfully stopped
     """
-    stopped = manager.stop(30)
+    if not len(args):
+        stopped = manager.stop(120)
+    else:
+        if type(args[0]) is int:
+            stopped = manager.stop(args[0])
+        else:
+            printer("Please use an integer as the argument")
+            stopped = False
     if stopped:
         printer("Stopped server")
     else:
