@@ -92,14 +92,16 @@ def start(args=[], printer=print):
     Returns:
         bool: whether the start was successful
     """
-    if not len(args):
-        started = manager.start(120)
-    else:
-        if type(args[0]) is int:
-            started = manager.start(args[0])
-        else:
-            printer("Please use an integer as the argument")
-            started = False
+    timeout = 120
+    if len(args):
+        try:
+            conversion = int(args[0])
+            timeout = conversion
+            del conversion
+        except:
+            printer(f"Please use an integer as the argument,\n\
+            using default of {timeout}")
+    started = manager.start(timeout)
     
     if started:
         printer("Started server")
@@ -119,16 +121,19 @@ def stop(args=[], printer=print):
     Returns:
         bool: whether the server successfully stopped
     """
-    if not len(args):
-        stopped = manager.stop(120)
-    else:
-        if type(args[0]) is int:
-            stopped = manager.stop(args[0])
-        else:
-            printer("Please use an integer as the argument")
-            stopped = False
+    timeout = 120
+    if len(args):
+        try:
+            conversion = int(args[0])
+            timeout = conversion
+            del conversion
+        except:
+            printer(f"Please use an integer as the argument,\n\
+            using default of {timeout}")
+    stopped = manager.stop(timeout)
+    
     if stopped:
-        printer("Stopped server")
+        printer("stopped server")
     else:
         printer("Could not stop server!")
     return stopped
